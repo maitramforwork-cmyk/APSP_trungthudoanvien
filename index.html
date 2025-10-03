@@ -416,7 +416,7 @@
         <div class="modal-content">
             <h2 id="loseMessageText">Thua rồi!</h2>
             <p>Đừng nản lòng, thử lại nhé!</p>
-            <button id="playAgainBtnLose">Chơi lại</button>
+            <button id="playAgainBtnLose" onclick="resetGame()">Chơi lại</button>
         </div>
     </div>
 
@@ -424,21 +424,17 @@
         // --- Game Configuration ---
         // Khôi phục mê cung phức tạp nhưng đã được kiểm tra lại
         const mazeLayout = [
-            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-            [2,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0,1],
-            [1,0,1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,0,1],
-            [1,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1],
-            [1,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,0,1],
-            [1,0,0,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1],
-            [1,0,1,1,1,1,1,0,1,0,1,0,1,0,1,0,1,1,1],
-            [1,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,1,0,1],
-            [1,1,1,0,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1],
-            [1,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1],
-            [1,0,1,1,1,0,1,1,1,1,1,1,1,1,1,0,1,0,1],
-            [1,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0,1,0,1],
-            [1,0,1,0,1,1,1,0,1,0,1,1,1,0,1,0,1,0,1],
-            [1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,3],
-            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [2,0,0,0,1,0,0,0,0,0,1,0,0,0,1],
+            [1,1,1,0,1,0,1,1,1,0,1,0,1,1,1],
+            [1,0,0,0,0,0,1,0,1,0,0,0,0,0,1],
+            [1,0,1,1,1,1,1,0,1,1,1,1,1,0,1],
+            [1,0,0,0,1,0,0,0,0,0,0,0,1,0,1],
+            [1,1,1,0,1,0,1,1,1,1,1,0,1,0,1],
+            [1,0,0,0,1,0,1,0,0,0,1,0,1,0,1],
+            [1,0,1,1,1,0,1,0,1,0,1,1,1,0,1],
+            [1,0,0,0,0,0,0,0,1,0,0,0,0,0,3],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
         ];
         // 1: wall, 0: path, 2: start, 3: end
         
@@ -505,8 +501,16 @@
             // --- SETUP EVENT LISTENERS ---
             canvas.addEventListener('mousedown', (e) => { 
                 if (!gameActive) return;
-                isDragging = true; 
-                handleMove(e.clientX, e.clientY); 
+                const rect = canvas.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left;
+                const mouseY = e.clientY - rect.top;
+
+                // Check if the click is on the player to start dragging
+                const dist = Math.hypot(mouseX - player.x, mouseY - player.y);
+                if (dist < PLAYER_RADIUS * 1.5) { // Larger radius for easier grabbing
+                    isDragging = true; 
+                    handleMove(e.clientX, e.clientY); 
+                }
             });
             canvas.addEventListener('mouseup', () => { isDragging = false; });
             canvas.addEventListener('mouseleave', () => { isDragging = false; });
@@ -515,8 +519,15 @@
             canvas.addEventListener('touchstart', (e) => { 
                 if (!gameActive) return;
                 e.preventDefault(); 
-                isDragging = true; 
-                handleMove(e.touches[0].clientX, e.touches[0].clientY); 
+                const rect = canvas.getBoundingClientRect();
+                const touchX = e.touches[0].clientX - rect.left;
+                const touchY = e.touches[0].clientY - rect.top;
+
+                const dist = Math.hypot(touchX - player.x, touchY - player.y);
+                if (dist < PLAYER_RADIUS * 1.5) { // Larger radius for easier grabbing
+                    isDragging = true; 
+                    handleMove(e.touches[0].clientX, e.touches[0].clientY); 
+                }
             }, { passive: false });
             canvas.addEventListener('touchend', (e) => { e.preventDefault(); isDragging = false; });
             canvas.addEventListener('touchcancel', (e) => { e.preventDefault(); isDragging = false; });
@@ -529,7 +540,7 @@
                 document.getElementById('prizeDisplay').style.display = 'block';
             });
             
-            document.getElementById('playAgainBtnLose').addEventListener('click', resetGame);
+            document.getElementById('playAgainBtn').addEventListener('click', resetGame);
             
             resetGame();
             createLights();
