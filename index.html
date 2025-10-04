@@ -257,9 +257,18 @@
             margin-bottom: 15px;
             font-weight: bold;
         }
+        .fortune-section-title {
+            font-weight: bold;
+            color: #8b4513; /* Nâu yên ngựa */
+            margin-top: 10px;
+        }
         .fortune-card p {
             color: #5a3a22;
             text-shadow: none;
+        }
+        .fortune-card em {
+            color: #d2691e; /* Màu socola */
+            font-style: italic;
         }
 
         @keyframes fadeIn {
@@ -442,16 +451,16 @@
         // 1: wall, 0: path, 2: start, 3: end
         
         const prizes = [
-            `<div class="prize-card moon-cake"><div class="icon">🥮</div><div class="title">1 Cái Bánh Trung Thu</div></div>`,
-            `<div class="prize-card voucher"><div class="header">PHIẾU ĐIỂM THƯỞNG</div><div class="points">20</div><div class="footer">Base Rewards</div></div>`,
-            `<div class="prize-card voucher"><div class="header">PHIẾU ĐIỂM THƯỞNG</div><div class="points">10</div><div class="footer">Base Rewards</div></div>`,
-            `<div class="prize-card voucher"><div class="header">PHIẾU ĐIỂM THƯỞNG</div><div class="points">50</div><div class="footer">Base Rewards</div></div>`
+            `<div class="prize-card voucher"><div class="header">THẺ QUÀ TẶNG</div><div class="points">100.000 <span style="font-size: 1.5rem;">VND</span></div><div class="footer">GotIt</div></div>`,
+            `<div class="prize-card voucher"><div class="header">THẺ QUÀ TẶNG</div><div class="points">50.000 <span style="font-size: 1.5rem;">VND</span></div><div class="footer">GotIt</div></div>`,
+            `<div class="prize-card voucher"><div class="header">PHIẾU ĐIỂM THƯỞNG</div><div class="points">50</div><div class="footer">Base Rewards</div></div>`,
+            `<div class="prize-card voucher"><div class="header">PHIẾU ĐIỂM THƯỞNG</div><div class="points">20</div><div class="footer">Base Rewards</div></div>`
         ];
         
         const fortunes = [
-             `<div class="fortune-card"><div class="fortune-title">🌟 Quẻ Đại Cát – Long Vân Tế Hội</div><p>Như rồng gặp mây lành, thời cơ đã tới, con đường sự nghiệp rộng mở. Nỗ lực bấy lâu sẽ được ghi nhận, quý nhân xuất hiện, mang đến cơ hội vàng son.<br><br>👉 Muốn vươn xa, hãy mạnh dạn đổi mới cách làm, trau dồi kỹ năng mềm để vững vàng trước sóng gió.</p></div>`,
-             `<div class="fortune-card"><div class="fortune-title">🌼 Quẻ Trung Cát – Kim Hoa Sơ Nở</div><p>Như nụ hoa vàng vừa hé, vận may nhỏ đang gõ cửa, báo hiệu khởi đầu thuận lợi. Đây chưa phải thành công lớn, nhưng là nền tảng để bạn thêm niềm tin và động lực.<br><br>👉 Đừng vội vàng, hãy kiên nhẫn bồi đắp kỹ năng mới và tích lũy kinh nghiệm, bạn sẽ sẵn sàng đón vận hội lớn hơn.</p></div>`,
-             `<div class="fortune-card"><div class="fortune-title">✨ Quẻ Tiểu Cát – Khê Lưu Chuyển Hướng</div><p>Tựa dòng suối gặp vật cản, công việc có thể chững lại hoặc khó khăn bất ngờ. Nhưng trở ngại chính là lời nhắc cần thay đổi phương pháp. Khi linh hoạt tìm hướng mới, cơ hội thăng tiến sẽ lộ diện.<br><br>👉 Hãy học cách cập nhật kỹ năng, phối hợp cùng đồng đội để biến trở ngại thành bậc thang.</p></div>`
+             `<div class="fortune-card"><div class="fortune-title">Quẻ Đại Cát: LONG VÂN TẾ HỘI</div><div><div class="fortune-section-title">Tổng luận:</div><em>Tựa rồng thiêng gặp được mây lành để vươn mình ra biển lớn. <strong>Thời cơ của bạn đã đến, vận hội hanh thông</strong>, con đường công danh sự nghiệp trước mắt rộng mở thênh thang, hứa hẹn những bước đột phá phi thường.</em></div><div><div class="fortune-section-title">Diễn giải:</div>Giai đoạn khó khăn, thử thách đã ở lại phía sau. Bao tâm huyết, nỗ lực âm thầm của bạn nay đã đến ngày đơm hoa kết trái. Quý nhân sắp xuất hiện, mang đến cơ hội vàng son hoặc sự trợ giúp đắc lực. Tài năng của bạn sẽ được nhìn nhận đúng lúc, đúng chỗ, tạo nên tiếng vang lớn.</div><div><div class="fortune-section-title">Lời khuyên:</div>Vận may đã tới, nhưng thành công không tự tìm đến. Hãy <strong>mạnh dạn thoát khỏi lối mòn, chủ động cải tiến phương thức làm việc</strong> để tạo nên hiệu quả vượt trội. Tin vào năng lực bản thân, đồng thời không ngừng <strong>trau dồi kỹ năng mềm</strong>, bởi đó chính là bản lĩnh giúp bạn vững tay chèo trước mọi con sóng bất ngờ trên hành trình chinh phục đỉnh cao.</div><div><div class="fortune-section-title">Kết:</div>Mọi sự viên mãn, danh lợi song toàn. Xin chúc mừng!</div></div>`,
+             `<div class="fortune-card"><div class="fortune-title">Quẻ Trung Cát: KIM HOA SƠ NỞ</div><div><div class="fortune-section-title">Tổng luận:</div><em>Như nụ hoa vàng sau đêm dài nay hé nở đón ánh dương. <strong>Vận may nhỏ đang đến</strong>, báo hiệu một <strong>khởi đầu mới thuận lợi</strong> và tốt lành. Những khúc mắc, trì trệ trước đây bắt đầu có hướng giải quyết.</em></div><div><div class="fortune-section-title">Diễn giải:</div>Một dự án nhỏ bắt đầu có tín hiệu tích cực, một ý tưởng mới được ghi nhận, hoặc một mối quan hệ công việc được cải thiện. Đây chưa phải là thành công lớn, nhưng là ánh sáng le lói cuối đường hầm, mang lại niềm tin và động lực. Giai đoạn này là để tích lũy và xây dựng nền tảng.</div><div><div class="fortune-section-title">Lời khuyên:</div>Đừng vội vàng mong gặt hái thành quả lớn. Hãy xem đây là cơ hội để bồi đắp cho bản thân. Việc chủ động <strong>cập nhật những kỹ năng mới</strong>, dù là nhỏ nhất, chính là "nguồn dinh dưỡng" cho nụ hoa sự nghiệp. Nhờ đó, bạn có thể <strong>phối hợp linh hoạt</strong> khi có cơ hội làm việc nhóm và <strong>thích nghi hiệu quả</strong> với những yêu cầu sắp tới. Sự chuẩn bị kỹ lưỡng hôm nay là nền tảng vững chắc cho thành công rực rỡ ngày mai.</div></div>`,
+             `<div class="fortune-card"><div class="fortune-title">Quẻ Tiểu Cát: KHÊ LƯU CHUYỂN HƯỚNG</div><div><div class="fortune-section-title">Tổng luận:</div><em>Tựa dòng suối gặp vật cản, không lùi bước mà uyển chuyển tìm lối đi riêng. Vận trình sự nghiệp đang ở giai đoạn then chốt, <strong>cơ hội và thử thách cùng xuất hiện</strong>. Một sự thay đổi nhỏ trong phương pháp sẽ tạo ra bước tiến lớn.</em></div><div><div class="fortune-section-title">Diễn giải:</div>Công việc hiện tại có dấu hiệu chững lại hoặc gặp phải những trở ngại bất ngờ. Những phương pháp cũ, con đường quen thuộc không còn mang lại hiệu quả như trước. Tuy nhiên, đây không phải bế tắc mà là <strong>một tín hiệu để bạn đổi mới</strong>. Cơ hội thăng tiến đang ẩn mình chính trong những thách thức này.</div><div><div class="fortune-section-title">Lời khuyên:</div>Nước chảy đá mòn. Đừng đối đầu trực diện với khó khăn, hãy học cách "lách" qua nó. Đây là lúc cần <strong>cập nhật những kỹ năng mới</strong> để tư duy sắc bén hơn, từ đó <strong>phối hợp linh hoạt</strong> với cộng sự và <strong>thích nghi hiệu quả</strong> với hoàn cảnh. Khi bạn thay đổi, vật cản sẽ trở thành bậc thang.</div></div>`
         ];
 
         let canvas, ctx;
@@ -842,13 +851,16 @@
                 initGame();
             } catch (error) {
                 console.error("Đã xảy ra lỗi nghiêm trọng khi khởi tạo game:", error);
-                document.body.innerHTML = `
-                    <div style="text-align: center; color: white; padding: 20px;">
-                        <h1>Rất tiếc, trò chơi đã gặp sự cố!</h1>
-                        <p>Vui lòng thử tải lại trang. Nếu vẫn không được, có thể trình duyệt của bạn không hỗ trợ.</p>
-                        <p>Chi tiết lỗi: ${error.message}</p>
-                    </div>
-                `;
+                const container = document.querySelector('.container');
+                if(container) {
+                    container.innerHTML = `
+                        <div style="text-align: center; color: white; padding: 20px;">
+                            <h1>Rất tiếc, trò chơi đã gặp sự cố!</h1>
+                            <p>Vui lòng thử tải lại trang. Nếu vẫn không được, có thể trình duyệt của bạn không hỗ trợ.</p>
+                            <p>Chi tiết lỗi: ${error.message}</p>
+                        </div>
+                    `;
+                }
             }
         };
 
@@ -858,5 +870,4 @@
     </script>
 </body>
 </html>
-
 
